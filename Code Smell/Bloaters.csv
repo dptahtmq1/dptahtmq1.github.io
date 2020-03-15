@@ -1,0 +1,27 @@
+﻿Name,Description,Treatment,Payoff
+Long Method,메서드의 코드 라인이 긴 경우,"Extract Method
+Replace Temp with Query
+Introduce Parameter Object
+Replace Method with Method Object
+Decompose Conditional",메서드의 길이가 짧을수록 이해하기 좋고 유지보수하기 좋다.
+Large Class,"클래스가 많은 필드, 메서드와 긴 코드 라인을 가지는 경우","Extract Class
+Extract Subclass
+Extract Interface
+Duplicate Observed Data","Large Class를 여러 파트로 나누면, 중복 코드와 중복 기능을 제거할 수 있다."
+Primitive Obsession,"객체보다 Primitive를 사용하는 경우
+Type Code를 위해 상수를 사용하는 경우
+Data Array에서 필드 이름을 상수로 표현하는 경우(ex. data[NAME])","Replace Data Value with Object
+Introduce Parameter Object
+Preserve Whole Object
+Replace Type Code with Class
+Replace Type Code with Subclasses
+Replace Type Code with State/Strategy
+Replace Array with Object","Primitive 대신 객체를 사용하면 코드가 유연해지고, 이해하기 쉬워지며 조직적으로 변경된다.
+데이터의 동작이 하나의 클래스로 모여지고, 상수와 배열이 왜 사용 되었는지 고민하지 않아도 된다."
+Long Parameter List,3~4개 이상의 Parameter가 전달되는 경우,"Replace Parameter with Method
+Preserve Whole Object
+Introduce Parameter Object",가독성 향상 및 중복 제거
+Data Clumps,"동일한 3~4개의 데이터 항목이 여러 위치에 몰려 있는 경우
+이러한 Clumps는 Class로 묶어 주어야 한다.","Extract Class
+Introduce Parameter Object
+Preserve Whole Object",데이터의 동작들이 하나의 클래스로 모여지게 된다.

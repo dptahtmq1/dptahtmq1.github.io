@@ -1,0 +1,21 @@
+﻿Name,Description,Treatment,Payoff
+Switch Statement,복잡한 switch나 if문이 있는 경우,"Extract Method
+Move Method
+Replace Type Code with Subclasses
+Replace Type Code with State/Strategy
+Replace Conditional with Polymorphism
+Replace Parameter with Explicit Methods
+Introduce Null Object","코드가 명확해지고 조직력이 개선된다.
+switch문이 간단한 처리만 할 경우 변경할 이유가 없다."
+Temporary Field,"객체 안에 인스턴스 변수가 특정 상황에서만 할당되는 경우
+분리된 class에 옮길 수 있다.","Extract Class
+Replace Method with Method Object
+Introduce Null Object",코드가 명확해지고 조직력이 개선된다.
+Refused Bequest,"하위클래스가 상위클래스의 메서드나 필드를 일부만 사용하는 경우
+불필요한 메서드는 사용되지 않거나, 재정의 되거나, Exception을 발생시킨다.","Push Down Method
+Push Down Field
+Replace Inheritance with Delegation",코드가 명확해지고 조직력이 개선된다.
+Alternative Classes with Different Interfaces,두 개 이상의 클래스가 동일한 동작을 하는 메서드를 가지는 경우,"Rename Method
+Move Method
+Extract Superclass","중복 코드를 제거할 수 있다.
+코드의 가독성과 이해력이 개선된다."

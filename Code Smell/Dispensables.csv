@@ -1,0 +1,36 @@
+﻿Name,Description,Treatment,Payoff
+Comments,"메서드가 설명하는 Comment들로 채워져 있는 경우
+The best comment is a good name for a method or class","Introduce Explaining Variables
+Extract Method
+Rename Method
+Introduce Assertion","유용한 코멘트는 남겨야 한다.
+- 특정한 방법으로 구현한 이유를 설명하는 코멘트
+- 복잡한 알고리즘을 설명하는 코멘트"
+Duplicate Code,똑같은 코드 구조가 두 군데 이상 있을 때,"Extract Method
+Pull Up Method
+Form Template Method
+Substitute Algorithm
+Extract Superclass
+Extract Class",코드 구조가 간단해지고 코드가 짧아진다
+Lazy Class,"리팩토링 실시로 인해 기능이 축소된 클래스
+수정할 계획으로 작성했으나 수정을 실시하지 않아 쓸모 없어진 클래스","Inline Class
+Inline Module
+Collapse Hierarchy","코드 사이즈가 줄어든다
+유지보수가 용이해진다."
+Data Class,"필드과 Getter/Setter만 있는 클래스
+데이터 보관만 담당하며, 거의 대부분의 구체적 데이터 조작은 다른 클래스에서 수행한다","Encapsulate Field
+Encapsulate Collection
+Move Method
+Extract Method
+Hide Method","코드의 이해도와 조직력이 개선된다
+데이터의 동작이 하나의 클래스로 모아진다."
+Dead Code,"더 이상 사용되지 않는 변수, 매개변수, 필드, 메서드와 클래스","Inline Class
+Collapse Hierarchy
+Remove Parameter","코드 사이즈가 줄어든다
+유지보수가 용이해진다."
+Speculative Generality,"막연한 생각에 아직은 필요 없는 기능을 수행하고자 만든 변수, 매개변수, 필드, 메서드와 클래스","Inline Class
+Collapse Hierarchy
+Remove Parameter
+Inline Method
+Rename Method","코드 사이즈가 줄어든다
+유지보수가 용이해진다."

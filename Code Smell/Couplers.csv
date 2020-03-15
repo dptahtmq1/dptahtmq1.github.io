@@ -1,0 +1,24 @@
+﻿Name,Description,Treatment,Payoff
+Feature Envy,"어떤 메서드가 자신이 속하지 않은 클래스에 더 많이 접근하는 경우
+데이터와 그것을 사용하는 function은 대부분 변경이 함께 이루어진다. 동시에 변경이 이루어지는 것들은 같은 장소에 위치해야 한다.","Move Method
+Extract Method","코드 조직력 개선 및 중복 제거
+Strategy / Visitor Pattern과 같이 overriding을 통해 기능을 데이터와 분리하는 경우에는 허용"
+Inappropriate Intimacy,클래스끼리 관계가 지나치게 밀접하여 서로의 private 필드와 메서드에 접근하는 경우,"Move Method
+Move Field
+Extract Class
+Hide Delegate
+Change Bidirectional Association to Unidirectional
+Replace Inheritance with Delegation","코드 조직력 개선
+유지보수가 용이해진다."
+Message Chains,"한 객체에 제 2의 객체를 요청하면, 제 2의 객체가 제 3의 객체를 요청하고, 이런 식으로 연쇄적 요청이 발생하는 경우
+ex. a.getB().getC().getD().getData()","Hide Delegate
+Extract Method
+Move Method","연결된 클래스 사이의 의존도를 줄인다
+비대한 코드 양을 줄일 수 있다
+→ 과도한 Hide Delegate는 실제 동작이 어디에서 이루어지는지 찾기 힘들게 한다. 또한 Middle Man Smell을 생성할 수 있다."
+Middle Man,어떤 클래스의 절반 이상의 인터페이스가 기능을 다른 클래스에 위임하고 있는 경우,"Remove Method
+Inline Method
+Replace Delegation with Inheritance","코드 사이즈를 줄일 수 있다.
+무시할 수 있는 경우
+- middle man이 클래스간 의존관계를 끊고 있는 경우
+- Proxy나 Decorator와 같이 의도적으로 생성된 경우"

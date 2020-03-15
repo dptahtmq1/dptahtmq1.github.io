@@ -1,0 +1,12 @@
+﻿Name,Description,Treatment,Payoff
+Divergent Change,"한 클래스가 다양한 원인 때문에 다양한 방식으로 자주 수정되는 경우
+(Shotgun Surgery와 유사하나 반대 개념)","Extract Class
+Extract Superclass
+Extract Subclass",코드 조직력 개선 및 중복 제거
+Shotgun Surgery,수정할 때마다 여러 클래스에서 수많은 자잘한 부분을 고쳐야 하는 경우,"Move Method
+Move Field
+Inline Class",코드 조직력 개선 및 중복 제거
+Parallel Inheritance Hierarchies,"한 클래스의 하위클래스를 만들 때마다, 매번 다른 클래스의 하위클래스를 만들어야 하는 경우
+(대칭되는 상속 계층이 존재하는 경우)","Move Method
+Move Field","코드 조직력 개선 및 중복 제거
+SRP를 위반하는 경우는 무시"
