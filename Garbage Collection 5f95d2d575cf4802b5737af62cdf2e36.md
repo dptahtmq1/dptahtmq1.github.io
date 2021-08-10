@@ -10,6 +10,11 @@ GC 원칙
 1. 알고리즘은 반드시 모든 가비지를 수집해야 한다.
 2. 살아 있는 객체는 절대로 수집해선 안된다.
 
+GC 튜닝
+
+1. Collector를 만들 생각은 절대 하지 마라.
+2. 그냥 있는 그대로 써라.
+
 ## Mark and sweep
 
 전체적인 GC 알고리즘
@@ -431,24 +436,34 @@ JVMCI : JDK9 부터. 얘가 실제로 하는 역할은 standard tiered compilati
 4. G1
 5. 그 외 수집기
 
-8장 : 로깅 관련은 제외
-
-1. GC 로깅 개요
-2. 로그 파싱
-    1. 로그 샘플
-    2. 툴
-3. GC 기본 튜닝
-4. Parallel, CMS, G1 쪽 옵션들
-5. jHiccup
-
 netty 방식
+### reference counted objects
 
-ZGC 에 대해서
+netty에서는 특정 오브젝트의 경우 reference count로 관리한다. 이 경우 더 이상 사용되지 않으면 object pool(또는 object allocator)로 리턴한다.
 
+GC 및 reference queue는 unreachability에 대한 효율적인 실시간 보장을 제공하지는 않지만, reference-counting은 약간의 불편을 겪으면서 대체 메커니즘을 제공함. 즉 unreachable object에 대한 실시간성을 위해 이 방법을 쓴다는 것 같음.
+
+`ByteBuf` 가 reference counting으로 할당/해제에 성능 향상을 얻는 대표적인 타입임.
+
+```java
+ByteBuf buf = ctx.alloc().directBuffer();
+assert buf.refCnt() == 1;
+
+// release() returns true only if the reference count becomes 0.
+boolean destroyed = buf.release();
+assert destroyed;
+assert buf.refCnt() == 0;
+```
+
+- buf 가 release 되면 reference count는 1 감소. reference count가 0이 되면, 할당 해제 되고 object pool로 돌아간다.
+
+reference counting의 단점은 memory leak 발생이 쉽다는 점이다. JVM은 netty가 reference counting을 어떻게 구현했는지 알 수 없다. reference count가 0이 아님에도 GC에 의해 unreachable object가 될 수 있다. 이 경우 되살릴 수 없고, 해당 object는 pool로 돌아가지 못하고, 결국 memory leak이 발생하게 된다.
+
+# 참고자료
+ZGC
 - [https://www.baeldung.com/jvm-zgc-garbage-collector](https://www.baeldung.com/jvm-zgc-garbage-collector)
 - [https://huisam.tistory.com/entry/jvmgc](https://huisam.tistory.com/entry/jvmgc)
 - [https://wiki.openjdk.java.net/display/zgc/Main](https://wiki.openjdk.java.net/display/zgc/Main)
 
 GC 선택
-
 - [https://medium.com/leadkaro/z-garbage-collector-zgc-in-java-14-bd8a2fff4943](https://medium.com/leadkaro/z-garbage-collector-zgc-in-java-14-bd8a2fff4943)
